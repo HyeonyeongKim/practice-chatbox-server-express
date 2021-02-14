@@ -1,27 +1,16 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser'); //npm install body-parser 후 사용할 수 있다.
-const cors = require('cors') // npm install cors 후 사용할 수 있다.
-
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const routes = require('./routes.js');
 
 const port = 3000;
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use('/', routes);
 
-let data = {"results":[]};
-app.get('/messages',(req, res) => {
-    res.send(data);
+// 필요한 모듈만 내보내기 위해 module.exports = app 하지 않고 server 변수에 넣어서 export해 봄
+const server = app.listen(port, () => {
+    console.log(`chatterbox-server refactored w/ Express listen on ${port}`);
 })
-app.post('/messages',(req, res) => {
-    res.send(req.body)
-});
-
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-});
-
-module.exports = app;
-
-//  request handler not required.
+module.exports = server;
