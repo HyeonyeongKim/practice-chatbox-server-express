@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title> chatterbox client </title>
+        <link rel = "stylesheet" href="styles/styles.css">
+    </head>
+    <body>
+        <div id = "main">
+            <h1>chatterbox</h1>
+            <form id = "input">
+                <select name = "roomname" id = "roomname">
+                    <option value = "Codestates" selected> Codestates</option>
+                    <option value = "DreamCoding">Dream Coding</option>
+                </select>
+                <input type = "text" id = "username" placeholder="Please enter username."/>
+                <textarea id = "text" placeholder="Please enter your message!"></textarea>
+                <button id = "submitBtn">Post</button>
+            </form>
+        </div>
+        <div id = "chats"></div>
+        <script src = "scripts/app.js"></script>
+    </body>
+</html>
